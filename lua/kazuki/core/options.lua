@@ -70,6 +70,6 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 -- puts a vertical line in nvim
 -- vim.opt.colorcolumn = "80"
-vim.opt.clipboard = "unnamedplus" -- Sync Neovim clipboard with system clipboard
+-- vim.opt.clipboard = "unnamedplus" -- Sync Neovim clipboard with system clipboard
 vim.opt.mouse = "a"             -- Enable mouse support in all modes
 vim.g.editorconfig = true       -- Enable consistent coding styles across editors
