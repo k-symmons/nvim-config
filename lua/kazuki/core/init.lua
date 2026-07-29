@@ -5,4 +5,3 @@ vim.g.maplocalleader = " "
 require("kazuki.core.options")
 require("kazuki.core.keymaps")
 
-vim.lsp.enable("basedpyright")
