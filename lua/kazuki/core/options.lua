@@ -8,14 +8,22 @@ vim.opt.nu = true
 -- enable relative line number
 vim.opt.relativenumber = true
 
--- define "Tab" charactor(/t) to show 4 spaces
+-- display tabs as 4 columns
 vim.opt.tabstop = 4
--- define "Tab" key to move 4 spaces
+-- make Tab and Backspace operate in 4-column steps
 vim.opt.softtabstop = 4
--- define how many spaces >> or << moves
+-- define indentation width for >> and <<
 vim.opt.shiftwidth = 4
--- convert tabs into spaces
-vim.opt.expandtab = true
+-- preserve tabs instead of converting them to spaces
+vim.opt.expandtab = false
+-- show tabs, spaces, trailing whitespace, and non-breaking spaces
+vim.opt.list = true
+vim.opt.listchars = {
+	tab = "» ",
+	space = "·",
+	trail = "·",
+	nbsp = "␣",
+}
 -- add new lines to the same indentation
 vim.opt.autoindent = true
 -- Do smart autoindenting when starting a new line.
