@@ -14,14 +14,15 @@ return {
 	  end,
 	},
 	{
-		"hardyrafael17/norminette42.nvim",
-		config = function()
-		local norminette = require("norminette")
-		norminette.setup({
-				runOnSave = true,
-				maxErrorsToShow = 5,
-				active = true,
+	  "MoulatiMehdi/42norm.nvim",
+	  config = function()
+		require("42norm").setup({
+		  format_on_save = true,
+		  header_on_save = false,
+		  lint_on_change = true,
+		  timeout = 3000,
+		  ignore = {},
 		})
-	end,
+	  end,
 	}
 }
