@@ -7,32 +7,30 @@ return {
     end,
   },
   {
-    "williamboman/mason-lspconfig.nvim", -- bridges Mason installs to lspconfig
-    version = "^1.0.0", -- v2 requires the newer vim.lsp.enable() workflow
+    "mason-org/mason-lspconfig.nvim", -- bridges Mason installs to Neovim's built-in LSP API
     dependencies = {
       "williamboman/mason.nvim", -- load Mason first
       {
-        "neovim/nvim-lspconfig", -- provides legacy server setup()
-        version = "^1.0.0",
+        "neovim/nvim-lspconfig", -- supplies the server configuration definitions
       },
     },
     config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = { -- LSP servers to auto-install
-          "lua_ls",  -- Lua
-          "pyright", -- Python
-          -- "ts_ls",   -- TS/JS
-          -- "gopls",   -- Go
-          "clangd",  -- C/C++
-        },
-        automatic_installation = true, -- also install any server set up via lspconfig
+      vim.diagnostic.config({
+        virtual_text = true,
       })
 
-      local lspconfig = require("lspconfig")
-      require("mason-lspconfig").setup_handlers({
-        function(server_name)
-          lspconfig[server_name].setup({})
-        end,
+      vim.lsp.config("lua_ls", {
+        settings = {
+          Lua = {
+            diagnostics = { globals = { "vim" } },
+            workspace = { checkThirdParty = false },
+          },
+        },
+      })
+
+      require("mason-lspconfig").setup({
+        ensure_installed = { "lua_ls", "pyright", "clangd" },
+        automatic_enable = true,
       })
     end,
   },
