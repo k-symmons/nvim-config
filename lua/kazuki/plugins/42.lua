@@ -14,7 +14,7 @@ return {
 	  end,
 	},
 	{
-	  "MoulatiMehdi/42norm.nvim",
+	  "k-symmons/42norm.nvim",
 	  config = function()
 		require("42norm").setup({
 		  format_on_save = true,
