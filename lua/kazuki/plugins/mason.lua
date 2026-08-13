@@ -1,22 +1,30 @@
 return {
   {
-    "williamboman/mason.nvim", -- core Mason plugin: installs LSP servers, linters, formatters
-    build = ":MasonUpdate", -- refresh Mason registry after install/update
+    "mason-org/mason.nvim",
+    build = ":MasonUpdate",
     config = function()
-      require("mason").setup() -- init Mason with defaults
+      require("mason").setup()
     end,
   },
+
   {
-    "mason-org/mason-lspconfig.nvim", -- bridges Mason installs to Neovim's built-in LSP API
+    "mason-org/mason-lspconfig.nvim",
     dependencies = {
-      "williamboman/mason.nvim", -- load Mason first
-      {
-        "neovim/nvim-lspconfig", -- supplies the server configuration definitions
-      },
+      "mason-org/mason.nvim",
+      "neovim/nvim-lspconfig",
+
+      -- Needed so LSP servers advertise nvim-cmp completion capabilities
+      "hrsh7th/cmp-nvim-lsp",
     },
+
     config = function()
       vim.diagnostic.config({
         virtual_text = true,
+      })
+
+      -- Apply nvim-cmp completion capabilities to ALL LSP servers.
+      vim.lsp.config("*", {
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
       })
 
       vim.lsp.config("lua_ls", {
@@ -34,23 +42,27 @@ return {
       })
     end,
   },
+
   {
-    "WhoIsSethDaniel/mason-tool-installer.nvim", -- installs non-LSP tools (formatters/linters)
-    dependencies = { "williamboman/mason.nvim" }, -- load mason first
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    dependencies = { "mason-org/mason.nvim" },
+
     config = function()
       require("mason-tool-installer").setup({
-        ensure_installed = { -- tools to auto-install
-          "black",        -- Python formatter
-          "isort",        -- Python import sorter
-          "ruff",         -- Python linter
-          "mypy",         -- Python type checker
-          "clang-format", -- C/C++ formatter
-          "cpplint",      -- C/C++ linter
+        ensure_installed = {
+          "black",
+          "isort",
+          "ruff",
+          "mypy",
+          "clang-format",
+          "cpplint",
         },
-        auto_update = false, -- don't auto-update on each start
-        run_on_start = true, -- install missing tools on startup
+
+        auto_update = false,
+        run_on_start = true,
+
         integrations = {
-          ["mason-lspconfig"] = false, -- latest integration expects mason-lspconfig v2
+          ["mason-lspconfig"] = false,
         },
       })
     end,
