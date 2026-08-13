@@ -17,7 +17,7 @@ return {
 	  "k-symmons/42norm.nvim",
 	  config = function()
 		require("42norm").setup({
-		  format_on_save = true,
+		  format_on_save = false,
 		  header_on_save = false,
 		  lint_on_change = true,
 		  timeout = 3000,
