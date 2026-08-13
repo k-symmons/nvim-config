@@ -1,0 +1,42 @@
+# Neovim config
+
+個人用のNeovim設定です。プラグイン管理には [lazy.nvim](https://github.com/folke/lazy.nvim) を使用しています。
+
+## セットアップ
+
+```sh
+git clone https://github.com/k-symmons/nvim-config.git ~/.config/nvim
+nvim
+```
+
+初回起動時にlazy.nvimと設定内のプラグインがインストールされます。
+
+## ファイル操作
+
+`mini.files`を使用しています。
+
+- `<leader>e`: 現在のファイルを起点に開く
+- `<leader>E`: カレントディレクトリを起点に開く
+- `l`: ディレクトリに入る／ファイルを開く
+- `h`: 親ディレクトリへ戻る
+- `w`: 変更を同期する
+- `q`: 閉じる
+- `g?`: ヘルプを表示する
+
+## 42向けコマンド
+
+- `<leader>cg`: `make`を実行する
+- `<leader>cn`: 現在のファイルにNorminetteを実行する
+- `<leader>cd`: 診断の内容と発生元を表示する
+- `:Cc42`: `cc -Wall -Wextra -Werror`でコンパイルして実行する
+
+GCCやLSP、Norminetteの診断には発生元が表示されます。`[42norm]`や`[clangd]`などのラベルを確認してください。
+
+## 42の学校端末について
+
+42の学校端末ではYaziを使用できないことがあるため、学校端末では`no_yazi`ブランチを使用してください。
+
+```sh
+git switch no_yazi
+```
+
