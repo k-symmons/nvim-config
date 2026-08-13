@@ -1,6 +1,20 @@
 -- Set local options for no recursive mapping and silent command messages
 local opts = { noremap = true, silent = true }
 
+-- Always show which tool produced a diagnostic (e.g. 42norm, clangd, gcc).
+vim.diagnostic.config({
+    virtual_text = {
+        prefix = "●",
+        format = function(diagnostic)
+            local source = diagnostic.source or "diagnostic"
+            return string.format("[%s] %s", source, diagnostic.message)
+        end,
+    },
+    float = {
+        source = "always",
+    },
+})
+
 
 -- ==========================================
 -- Visual Mode Mappings
@@ -50,6 +64,11 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- Execute the current script/buffer directly inside Neovim
 vim.keymap.set("n", "<leader>x", "<cmd>source %<CR>", opts)
+
+-- Run the compiler and Norminette independently so their output is unambiguous.
+vim.keymap.set("n", "<leader>cg", "<cmd>make<CR>", { desc = "Compile with GCC" })
+vim.keymap.set("n", "<leader>cn", "<cmd>!norminette %<CR>", { desc = "Run Norminette" })
+vim.keymap.set("n", "<leader>cd", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Show diagnostic source" })
 
 -- Code formatting (requires an LSP attached)
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, opts)
