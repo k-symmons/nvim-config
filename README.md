@@ -40,3 +40,8 @@ GCCやLSP、Norminetteの診断には発生元が表示されます。`[42norm]`
 git switch no_yazi
 ```
 
+## ヘッダーについて
+
+.config/nvim/lua/kazuki/plugins/42.lua内の以下の項目を変更してください：
+user = "ksymmons",                                                                                                                                                                                                                                                                    
+mail = "ksymmons@student.42tokyo.jp",  
