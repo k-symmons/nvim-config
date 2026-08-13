@@ -27,6 +27,7 @@ nvim
 
 - `<leader>cg`: `make`を実行する
 - `<leader>cn`: 現在のファイルにNorminetteを実行する
+- `<leader>cf`: 現在のバッファを42normでフォーマットする
 - `<leader>cd`: 診断の内容と発生元を表示する
 - `:Cc42`: `cc -Wall -Wextra -Werror`でコンパイルして実行する
 

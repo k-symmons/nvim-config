@@ -68,6 +68,9 @@ vim.keymap.set("n", "<leader>x", "<cmd>source %<CR>", opts)
 -- Run the compiler and Norminette independently so their output is unambiguous.
 vim.keymap.set("n", "<leader>cg", "<cmd>make<CR>", { desc = "Compile with GCC" })
 vim.keymap.set("n", "<leader>cn", "<cmd>!norminette %<CR>", { desc = "Run Norminette" })
+vim.keymap.set("n", "<leader>cf", function()
+    require("42norm").format()
+end, { desc = "Format with 42norm" })
 vim.keymap.set("n", "<leader>cd", "<cmd>lua vim.diagnostic.open_float()<CR>", { desc = "Show diagnostic source" })
 
 -- Code formatting (requires an LSP attached)
