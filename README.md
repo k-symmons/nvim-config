@@ -15,8 +15,10 @@ nvim
 
 `mini.files`を使用しています。
 
-- `<leader>e`: 現在のファイルを起点に開く
-- `<leader>E`: カレントディレクトリを起点に開く
+- `<leader>ee`: 現在のファイルを起点に開く
+- `<leader>ec`: カレントディレクトリを起点に開く
+- `<leader>ey`: 現在のファイルを起点にYaziを開く
+- `<leader>ew`: カレントディレクトリを起点にYaziを開く
 - `l`: ディレクトリに入る／ファイルを開く
 - `h`: 親ディレクトリへ戻る
 - `w`: 変更を同期する
@@ -29,6 +31,10 @@ nvim
 - `<leader>cn`: 現在のファイルにNorminetteを実行する
 - `<leader>cf`: 現在のバッファを42normでフォーマットする
 - `<leader>cd`: 診断の内容と発生元を表示する
+- `<leader>ct`: Norminetteの診断表示を切り替える
+- `<leader>ff`: LSPで現在のバッファをフォーマットする
+- `<leader>fp`: 現在のファイルの絶対パスをコピーする
+- `<leader>r`: カーソル下の単語をファイル内で置換する
 - `:Cc42`: `cc -Wall -Wextra -Werror`でコンパイルして実行する
 
 GCCやLSP、Norminetteの診断には発生元が表示されます。`[42norm]`や`[clangd]`などのラベルを確認してください。

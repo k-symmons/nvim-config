@@ -27,10 +27,10 @@ return {
 	    MiniFiles.open(path ~= "" and path or vim.uv.cwd(), false)
 	  end
 
-	  vim.keymap.set("n", "<leader>e", open_current_file, { desc = "Open mini.files" })
-	  vim.keymap.set("n", "<leader>E", function()
+	  vim.keymap.set("n", "<leader>ee", open_current_file, { desc = "Open at current file" })
+	  vim.keymap.set("n", "<leader>ec", function()
 	    MiniFiles.open(vim.uv.cwd(), false)
-	  end, { desc = "Open mini.files at cwd" })
+	  end, { desc = "Open at working directory" })
 	  require("mini.pick").setup()
     end,
   }
